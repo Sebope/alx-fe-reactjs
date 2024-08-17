@@ -1,14 +1,9 @@
-// src/App.jsx
+// src/ProfilePage.jsx
 import React from 'react';
-import Counter from './components/Counter'; // Import the Counter component
+import UserInfo from './UserInfo';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Counter Application</h1>
-      <Counter /> {/* Include the Counter component */}
-    </div>
-  );
+function ProfilePage() {
+  return <UserInfo />;
 }
 
-export default App;
+export default ProfilePage;
