@@ -1,9 +1,14 @@
-// src/ProfilePage.jsx
-import React from 'react';
-import UserInfo from './UserInfo';
+import UserContext from "./components/UserContext";
+import ProfilePage from "./components/ProfilePage";
 
-function ProfilePage() {
-  return <UserInfo />;
+function App() {
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+
+  return (
+    <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
+  );
 }
 
-export default ProfilePage;
+export default App;
