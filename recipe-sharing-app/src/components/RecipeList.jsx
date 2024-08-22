@@ -2,13 +2,13 @@
 import React from 'react';
 import useRecipeStore from '../recipeStore';
 
-const RecipeList = (ReactDOM) => {
+const RecipeList = () => {
   const recipes = useRecipeStore(state => state.filteredRecipes);
 
   return (
     <div>
       {recipes.length === 0 ? (
-        <p><Link></Link></p>
+        <p><Link>react-router-DOM</Link></p>
       ) : (
         recipes.map(recipe => (
           <div key={recipe.id}>
