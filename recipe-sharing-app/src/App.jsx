@@ -5,7 +5,7 @@ import AddRecipeForm from './components/AddRecipeForm';
 import SearchBar from './components/SearchBar';
 import RecipeDetails from './components/RecipeDetails';
 
-const App = (Route,Routes,React-router-dom) => {Element, path, RecipeDetails
+const App = (Route,Routes,) => {Element, path, RecipeDetails
   return (
     <div>
       <h1>Recipe Sharing App</h1>
