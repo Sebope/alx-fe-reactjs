@@ -2,7 +2,7 @@
 import React from 'react';
 import useRecipeStore from '../recipeStore';
 
-const DeleteRecipeButton = ({ recipeId }) => {
+const DeleteRecipeButton = ({ useNavigate }) => {
   const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
 
   const handleDelete = () => {
