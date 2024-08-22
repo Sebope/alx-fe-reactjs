@@ -1,15 +1,18 @@
-// src/main.jsx
+// src/App.jsx
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App';
-import RecipeDetails from './components/RecipeDetails';
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+import SearchBar from './components/SearchBar';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
-    </Routes>
-  </Router>
-);
+const App = () => {
+  return (
+    <div>
+      <h1>Recipe Sharing App</h1>
+      <SearchBar />
+      <AddRecipeForm />
+      <RecipeList />
+    </div>
+  );
+};
+
+export default App;
