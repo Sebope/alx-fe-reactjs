@@ -1,19 +1,16 @@
-// src/components/AddRecipeForm.jsx
 import React, { useState } from 'react';
-import useRecipeStore from '../recipeStore';
+import { useRecipeStore } from './recipeStore';
 
 const AddRecipeForm = () => {
-  const addRecipe = useRecipeStore(state => state.addRecipe);
+  const addRecipe = useRecipeStore((state) => state.addRecipe);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (title && description) {
-      addRecipe({ id: Date.now(), title, description });
-      setTitle('');
-      setDescription('');
-    }
+    addRecipe({ id: Date.now(), title, description });
+    setTitle('');
+    setDescription('');
   };
 
   return (
