@@ -1,19 +1,22 @@
-// src/App.jsx
-import React from 'react';
-import RecipeList from './components/RecipeList';
-import AddRecipeForm from './components/AddRecipeForm';
-import SearchBar from './components/SearchBar';
-import RecipeDetails from './components/RecipeDetails';
-
-const App = (Route,Routes,) => {Element, path, RecipeDetails
+function App() {
   return (
-    <div>
-      <h1>Recipe Sharing App</h1>
-      <SearchBar />
-      <AddRecipeForm />
-      <RecipeList />
-    </div>
+    <Router>
+      <div>
+        <h1>Recipe Sharing Application</h1>
+        <SearchBar />
+        <AddRecipeForm />
+        <Routes>
+          <Route path="/" element={<RecipeList />} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetailsWrapper />} />
+        </Routes>
+      </div>
+    </Router>
   );
+}
+
+const RecipeDetailsWrapper = () => {
+  const { recipeId } = useParams();
+  return <RecipeDetails recipeId={parseInt(recipeId, 10)} />;
 };
 
 export default App;
