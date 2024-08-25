@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
-import { useRecipeStore } from './recipeStore';
+import React, { useEffect } from "react";
+import { useRecipeStore } from "./recipeStore";
 
 const RecommendationsList = () => {
-  const { recipes, recommendations, generateRecommendations } = useRecipeStore((state) => ({
-    recipes: state.recipes,
-    recommendations: state.recommendations,
-    generateRecommendations: state.generateRecommendations
-  }));
+  const { recipes, recommendations, generateRecommendations } = useRecipeStore(
+    (state) => ({
+      recipes: state.recipes,
+      recommendations: state.recommendations,
+      generateRecommendations: state.generateRecommendations,
+    })
+  );
 
   useEffect(() => {
     generateRecommendations();
@@ -16,7 +18,7 @@ const RecommendationsList = () => {
     <div>
       <h2>Recommended Recipes</h2>
       {recommendations.length > 0 ? (
-        recommendations.map(recipe => (
+        recommendations.map((recipe) => (
           <div key={recipe.id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
