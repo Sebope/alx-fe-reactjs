@@ -31,4 +31,3 @@ const RecipeDetailsWrapper = () => {
 };
 
 export default App;
-
