@@ -2,10 +2,11 @@ import React from 'react';
 import { useRecipeStore } from './recipeStore';
 
 const FavoritesList = () => {
-  const recipes = useRecipeStore(state => state.recipes);
-  const favorites = useRecipeStore(state => state.favorites);
+  const { recipes, favorites } = useRecipeStore((state) => ({
+    recipes: state.recipes,
+    favorites: state.favorites
+  }));
 
-  // Filter recipes to only include favorites
   const favoriteRecipes = recipes.filter(recipe => favorites.includes(recipe.id));
 
   return (
@@ -16,11 +17,10 @@ const FavoritesList = () => {
           <div key={recipe.id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
-            {/* Optionally, add a button to remove from favorites */}
           </div>
         ))
       ) : (
-        <p>No favorites yet.</p>
+        <p>No favorites added yet.</p>
       )}
     </div>
   );
