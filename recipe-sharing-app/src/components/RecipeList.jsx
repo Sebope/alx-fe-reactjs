@@ -18,7 +18,7 @@ const RecipeList = () => {
         filteredRecipes.map(recipe => (
           <div key={recipe.id}>
             <h3>
-              <Link to={/recipe/${recipe.id}}>{recipe.title}</Link>
+              <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
             </h3>
             <p>{recipe.description}</p>
           </div>
@@ -31,4 +31,3 @@ const RecipeList = () => {
 };
 
 export default RecipeList;
-
