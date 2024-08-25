@@ -1,15 +1,21 @@
-// src/main.jsx
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App';
-import RecipeDetails from './components/RecipeDetails';
+import FavoritesList from './FavoritesList';
+import RecommendationsList from './RecommendationsList';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
-    </Routes>
-  </Router>
-);
+const App = () => {
+  return (
+    <div>
+      <header>
+        <h1>Recipe Sharing App</h1>
+        {/* Add navigation or links if needed */}
+      </header>
+      <main>
+        <FavoritesList />
+        <RecommendationsList />
+        {/* Include other components like RecipeList, RecipeDetail, etc. */}
+      </main>
+    </div>
+  );
+};
+
+export default App;
