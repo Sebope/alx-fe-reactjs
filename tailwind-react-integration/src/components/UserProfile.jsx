@@ -1,19 +1,14 @@
-import React from 'react';
-
-function UserProfile() {
-  return (
-    <div className="bg-gray-100 p-4 sm:p-4 md:p-8 md:max-w-sm max-w-xs mx-auto my-12 md:my-20 rounded-lg shadow-lg">
-      <img 
-        src="https://via.placeholder.com/150" 
-        alt="User" 
-        className="w-24 h-24 sm:w-24 sm:h-24 md:w-36 md:h-36 rounded-full mx-auto"
-      />
-      <h1 className="text-lg sm:text-xl md:text-xl text-blue-800 my-4">John Doe</h1>
-      <p className="text-sm sm:text-base md:text-base text-gray-600">
-        Developer at Example Co. Loves to write code and explore new technologies.
-      </p>
-    </div>
-  );
-}
-
-export default UserProfile;
+<div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out p-6 max-w-sm mx-auto">
+  
+  <div class="flex justify-center mb-4">
+    < src"profile-picture.jpg" alt="Profile Picture" class="w-32 h-32 rounded-full object-cover transition-transform duration-300 ease-in-out hover:scale-110">
+  </div>
+  
+  <div class="text-center">
+    <h1 class="text-2xl font-semibold mb-2 transition-colors duration-300 ease-in-out hover:text-blue-500">
+      John Doe
+    </h1>
+    <p class="text-gray-600">Software Engineer</p>
+    <p class="text-gray-500">john.doe@example.com</p>
+  </div>
+</div>
