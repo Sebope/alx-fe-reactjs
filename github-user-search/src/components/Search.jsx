@@ -1,26 +1,22 @@
-// src/components/Search.jsx
 import React, { useState } from 'react';
-import { fetchUserData } from '../services/githubService';
+import { fetchUserData } from '../services/githubService'; 
 
 const Search = () => {
   const [username, setUsername] = useState('');
-  const [userData, setUserData] = useState(null);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleInputChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError(null);
+
     try {
-      const data = await fetchUserData(username);
-      setUserData(data);
+      const data = await fetchUserData(username); 
+      setUsers(data.items); 
     } catch (err) {
-      setError('Looks like we can’t find the user');
+      setError("Looks like we can't find any users");
     } finally {
       setLoading(false);
     }
@@ -28,22 +24,30 @@ const Search = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSearch}>
         <input
           type="text"
           value={username}
-          onChange={handleInputChange}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter GitHub username"
+          className='border p-2 rounded-md'
         />
-        <button type="submit">Search</button>
+        <button type="submit" className='border p-2 rounded-md bg-blue-500 text-white hover:bg-blue-400'>Search</button>
       </form>
+
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {userData && (
+
+      {users.length > 0 && (
         <div>
-          <img src={userData.avatar_url} alt={userData.name} width={100} />
-          <h2>{userData.name}</h2>
-          <a href={userData.html_url} target="_blank" rel="noopener noreferrer">View Profile</a>
+          {users.map(user => (
+            <div key={user.id}>
+              <h2>{user.login}</h2>
+              <p>Location: {user.location ? user.location : 'Not specified'}</p>
+              <p>Public Repositories: {user.public_repos}</p> 
+              <a href={user.html_url} target="_blank" rel="noopener noreferrer">View Profile</a>
+            </div>
+          ))}
         </div>
       )}
     </div>
