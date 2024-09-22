@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchComponent from '../components/Search';
+import Search from './components/Search';
 import ResultsList from './components/ResultsList';
 import { fetchUserData } from './services/githubService';
 
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="container flex justify-center items-center flex-col gap-4 mx-auto p-4">
       <h1 className="text-2xl font-bold text-center">GitHub User Search</h1>
-      <SearchComponent onSearch={handleSearch} />
+      <Search onSearch={handleSearch} />
       <ResultsList results={results} loading={loading} error={error} />
     </div>
   );
