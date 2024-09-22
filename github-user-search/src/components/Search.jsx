@@ -14,7 +14,7 @@ const Search = () => {
 
     try {
       const data = await fetchUserData(username); 
-      setUsers(data.items); 
+      setUsers(data.items); // Assumes data.items contains the search results
     } catch (err) {
       setError("Looks like we can't find any users");
     } finally {
@@ -24,28 +24,33 @@ const Search = () => {
 
   return (
     <div>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} className="mb-4">
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter GitHub username"
-          className='border p-2 rounded-md'
+          className="border p-2 rounded-md mr-2"
         />
-        <button type="submit" className='border p-2 rounded-md bg-blue-500 text-white hover:bg-blue-400'>Search</button>
+        <button type="submit" className="border p-2 rounded-md bg-blue-500 text-white hover:bg-blue-400">
+          Search
+        </button>
       </form>
 
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
 
       {users.length > 0 && (
-        <div>
+        <div className="mt-4">
           {users.map(user => (
-            <div key={user.id}>
-              <h2>{user.login}</h2>
-              <p>Location: {user.location ? user.location : 'Not specified'}</p>
-              <p>Public Repositories: {user.public_repos}</p> 
-              <a href={user.html_url} target="_blank" rel="noopener noreferrer">View Profile</a>
+            <div key={user.id} className="border-b py-2">
+              <img src={user.avatar_url} alt={user.login} className="w-24 h-24 rounded-full inline" />
+              <h2 className="font-semibold">{user.login}</h2>
+              <p>Location: {user.location || 'N/A'}</p>
+              <p>Repositories: {user.public_repos || 0}</p>
+              <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                View Profile
+              </a>
             </div>
           ))}
         </div>
