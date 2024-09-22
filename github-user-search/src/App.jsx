@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Search from './components/Search';
+import Search from './components/search';
 import ResultsList from './components/ResultsList';
 import { fetchUserData } from './services/githubService';
 
